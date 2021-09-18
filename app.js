@@ -1,6 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 const express = require('express');
 const mongoose = require('mongoose');
+const ejsMate = require('ejs-mate');
 const path = require('path');
 const methodOverride = require('method-override');
 const Campground = require('./models/campground');
@@ -14,6 +15,8 @@ main().catch((err) => console.log(err));
 
 const app = express();
 // render parameter
+
+app.engine('ejs', ejsMate);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
